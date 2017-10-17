@@ -6,8 +6,37 @@ def main():
 		Student("Pillsbury", "Silas", 16, 120, 71, "Brown", "Blue"),
 		Student("Dussault", "Riley", 16, 120, 69, "Blonde", "Brown"), 
 	]
- 
-	while True: 
+
+	functions = [
+		printSortedByAge,
+		printSortedByLName,
+		printSortedByFName,
+		printSortedByWeight,
+		printSortedByHeight,
+		printSortedByHair,
+		printSortedByEyes,
+		addStudent,
+		terminateCMD
+		]	
+
+	selections = [
+		"sortByAge",
+		"sortByLName",
+		"sortByFName",
+		"sortByWeight",
+		"sortByHeight",
+		"sortByHair",
+		"sortByEyes",
+		"addStudent",
+		"terminateCMD"
+		]
+	T = True
+	while T:
+		selection = userSelection()
+		functions[selection.index(selection)] (students)
+
+
+	"""while True: 
 		printHeader()
 		selection = userSelection()
 		if selection == "sortByAge":
@@ -31,6 +60,7 @@ def main():
 			break
 		else:
 			print ("SELECTION IS NOT RECOGNIZED...")
+"""
 
 class Student:
 	def __init__(self, lastName, firstName, age, weight, height, hair, eyes):
@@ -61,7 +91,10 @@ def userSelection():
 	for inputQuestion in inputQuestions:
 		print (inputQuestion)
 	return input("Enter selection here and press enter:")
-
+def terminateCMD():
+	print ("TERMINATING COMAND LINE...")
+	T = False
+	
 def addStudent(students):
 	print ("<<<ADD STUDENTS>>>")
 	newStudentLName = input("ENTER LAST NAME: ")
