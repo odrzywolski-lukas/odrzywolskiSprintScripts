@@ -17,14 +17,17 @@ def main():
 		"sortByEyes" : printSortByEyes,
 		"addStudent" : addStudent,
 		"removeStudent" : removeStudent,
-		"terminateCMD" : terminateCMD
+		"terminateCMD" : False,
 		}
 
-	T = True
-	while T:
+	while True:
 		printHeader()
 		selection = userSelection()
-		selections[selection] (students)
+		if selections[selection]:
+			selections[selection] (students)
+		else:
+			print ("TERMINATING COMMAND LINE...")
+			break
 
 class Student:
 	def __init__(self, lastName, firstName, age, weight, height, hair, eyes):
@@ -56,10 +59,6 @@ def userSelection():
 	for inputQuestion in inputQuestions:
 		print (inputQuestion)
 	return input("Enter selection here and press enter:")
-
-def terminateCMD():
-	print ("TERMINATING COMAND LINE...")
-	T = False
 	
 def addStudent(students):
 	print ("<<<ADD STUDENTS>>>")

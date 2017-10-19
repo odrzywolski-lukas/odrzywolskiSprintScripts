@@ -17,14 +17,17 @@ def main():
 		"sortByEyes" : printSortByEyes,
 		"addStudent" : addStudent,
 		"removeStudent" : removeStudent,
-		"terminateCMD" : terminateCMD
+		"terminateCMD" : False
 		}
 
-	T = True
-	while T:
+	while True:
 		printHeader()
 		selection = userSelection()
-		selections[selection] (students)
+		if selections[selection]:
+			selections[selection] (students)
+		else:
+			print ("TERMINATING COMMAND LINE...")
+			break
 
 class Student:
 	def __init__(self, lastName, firstName, age, weight, height, hair, eyes):
@@ -56,11 +59,7 @@ def userSelection():
 	for inputQuestion in inputQuestions:
 		print (inputQuestion)
 	return input("Enter selection here and press enter:")
-	
-def terminateCMD():
-	print ("TERMINATING COMAND LINE...")
-	T = False
-	
+
 def addStudent(students):
 	print ("<<<ADD STUDENTS>>>")
 	newStudentLName = input("ENTER LAST NAME: ")
@@ -72,47 +71,47 @@ def addStudent(students):
 	newStudentEyes = input("ENTER EYE COLOR: ")
 	students.append(Student(newStudentLName, newStudentFName, newStudentAge, newStudentWeight, newStudentHeight, newStudentHair, newStudentEyes))
 
-def reomveStudent(students):
+def removeStudent(students):
 	print ("<<<REMOVE STUDENT>>>")
 	indexRemoved = int(input("ENTER INDEX OF STUDENT: "))
 	print ("REMOVED " + students[indexRemoved].lastName + " FROM LIST")
 	students.pop(indexRemoved)
 
-def printSortedByAge(students):
+def printSortByAge(students):
 	print ("<<<STUDENTS SORTED BY AGE>>>")
 	sortStudents = sorted(students, key=lambda student: student.age)
 	for student in sortStudents:
 		print (str(student.age) + "yr" + ", " + student.lastName + ", " + student.firstName + ", " + str(student.weight) + "lb" + ", " + str(student.height) + "in" + ", " + student.hair + " hair" + ", " + student.eyes + " eyes")
 
-def printSortedByLName(students):
+def printSortByLName(students):
 	print ("<<<STUDENTS SORTED BY LAST NAME>>>")
 	sortStudents = sorted(students, key=lambda student: student.lastName)
 	for student in sortStudents:
 		print (student.lastName + ", " + student.firstName + ", " + str(student.age) + "yr" + ", " + str(student.weight) + "lb" + ", " + str(student.height) + "in" + ", " + student.hair + " hair" + ", " + student.eyes + " eyes")
 
-def printSortedByFName(students):
+def printSortByFName(students):
 	print ("<<<STUDENTS SORTED BY FIRST NAME>>>")
 	sortStudents = sorted(students, key=lambda student: student.firstName)
 	for student in sortStudents:
 		print (student.firstName + ", " + student.lastName + ", " + str(student.age) + "yr" + ", " + str(student.weight) + "lb" + ", " + str(student.height) + "in" + ", " + student.hair + " hair" + ", " + student.eyes + " eyes")
 
-def printSortedByWeight(students):
+def printSortByWeight(students):
 	print ( "<<<STUDENTS SORTED BY WEIGHT>>>")
 	sortStudents = sorted(students, key=lambda student: student.weight)
 	for student in sortStudents:
 		print (str(student.weight) + "lb" + ", " + student.lastName + ", " + student.firstName + ", " + str(student.age) + "yr" + ", " + str(student.height) + "in" + ", " + student.hair + " hair" + ", " + student.eyes + " eyes")
 
-def printSortedByHeight(students):
+def printSortByHeight(students):
 	sortStudents = sorted(students, key=lambda student: student.height)
 	for student in sortStudents:
 		print (str(student.height) + "in" + ", " + student.lastName + ", " + student.firstName + ", " + str(student.age) + "yr" + ", " + str(student.weight) + "lb" + ", " + student.hair + " hair" + ", " + student.eyes + " eyes")
 
-def printSortedByHair(students):
+def printSortByHair(students):
 	sortStudents = sorted(students, key=lambda student: student.hair)
 	for student in sortStudents:
 		print (student.hair + " hair" + ", " + student.lastName + ", " + student.firstName + ", " + str(student.age) + "yr" + ", " + str(student.weight) + "lb" + ", " + str(student.height) + "in" + ", " + student.eyes + "eyes")
 
-def printSortedByEyes(students):
+def printSortByEyes(students):
 	sortStudents = sorted(students, key=lambda student: student.eyes)
 	for student in sortStudents:
 		print (student.eyes + " eyes" + ", " + student.lastName + ", " + student.firstName + ", " + str(student.age) + "yr" + ", " + str(student.weight) + "lb" + ", " + str(student.height) + "in" + ", " + student.hair + " hair")
