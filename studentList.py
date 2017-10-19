@@ -7,7 +7,8 @@ def main():
 		Student("Dussault", "Riley", 16, 120, 69, "Blonde", "Brown"), 
 	]
 
-	functions = [
+
+functions = [
 		printSortedByAge,
 		printSortedByLName,
 		printSortedByFName,
@@ -32,13 +33,16 @@ def main():
 		"removeStudent",
 		"terminateCMD"
 		]
+
+
 	T = True
 	while T:
 		selection = userSelection()
 		functions[selection.index(selection)] (students)
+	"""
+	T = True
 
-
-	"""while True: 
+	while T: 
 		printHeader()
 		selection = userSelection()
 		if selection == "sortByAge":
@@ -60,8 +64,8 @@ def main():
 		elif selection == "removeStudent":
 			reomveStudent(students)
 		elif selection == "terminateCMD":
-			print ("TERMINATING COMMAND LINE...")
-			break
+			terminateCMD()
+			T = False
 		else:
 			print ("SELECTION IS NOT RECOGNIZED...")
 """
@@ -96,6 +100,7 @@ def userSelection():
 	for inputQuestion in inputQuestions:
 		print (inputQuestion)
 	return input("Enter selection here and press enter:")
+
 def terminateCMD():
 	print ("TERMINATING COMAND LINE...")
 	T = False
