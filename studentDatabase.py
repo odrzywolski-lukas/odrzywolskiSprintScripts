@@ -7,64 +7,24 @@ def main():
 		Student("Dussault", "Riley", 16, 120, 69, "Blonde", "Brown"), 
 	]
 
-	functions = [
-		printSortedByAge,
-		printSortedByLName,
-		printSortedByFName,
-		printSortedByWeight,
-		printSortedByHeight,
-		printSortedByHair,
-		printSortedByEyes,
-		addStudent,
-		removeStudent,
-		terminateCMD
-		]	
+	selections = {
+		"sortByAge" : printSortByAge,
+		"sortByLName" : printSortByLName,
+		"sortByFName" : printSortByFName,
+		"sortByWeight" : printSortByWeight,
+		"sortByHeight" : printSortByHeight,
+		"sortByHair" : printSortByHair,
+		"sortByEyes" : printSortByEyes,
+		"addStudent" : addStudent,
+		"removeStudent" : removeStudent,
+		"terminateCMD" : terminateCMD
+		}
 
-	selections = [
-		"sortByAge",
-		"sortByLName",
-		"sortByFName",
-		"sortByWeight",
-		"sortByHeight",
-		"sortByHair",
-		"sortByEyes",
-		"addStudent",
-		"removeStudent",
-		"terminateCMD"
-		]
 	T = True
 	while T:
-		selection = userSelection()
-		functions[selection.index(selection)] (students)
-
-
-	"""while True: 
 		printHeader()
 		selection = userSelection()
-		if selection == "sortByAge":
-			printSortedByAge(students)
-		elif selection == "sortByLName":
-			printSortedByLName(students)
-		elif selection == "sortByFName":
-			printSortedByFName(students)
-		elif selection == "sortByWeight":
-			printSortedByWeight(students)
-		elif selection == "sortByHeight":
-			printSortedByHeight(students)
-		elif selection == "sortByHair":
-			printSortedByHair(students)
-		elif selection == "sortByEyes":
-			printSortedByEyes(students)
-		elif selection == "addStudent":
-			addStudent(students)
-		elif selection == "removeStudent":
-			reomveStudent(students)
-		elif selection == "terminateCMD":
-			print ("TERMINATING COMMAND LINE...")
-			break
-		else:
-			print ("SELECTION IS NOT RECOGNIZED...")
-"""
+		selections[selection] (students)
 
 class Student:
 	def __init__(self, lastName, firstName, age, weight, height, hair, eyes):
@@ -96,6 +56,7 @@ def userSelection():
 	for inputQuestion in inputQuestions:
 		print (inputQuestion)
 	return input("Enter selection here and press enter:")
+	
 def terminateCMD():
 	print ("TERMINATING COMAND LINE...")
 	T = False

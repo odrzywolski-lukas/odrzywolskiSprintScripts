@@ -7,68 +7,24 @@ def main():
 		Student("Dussault", "Riley", 16, 120, 69, "Blonde", "Brown"), 
 	]
 
-
-functions = [
-		printSortedByAge,
-		printSortedByLName,
-		printSortedByFName,
-		printSortedByWeight,
-		printSortedByHeight,
-		printSortedByHair,
-		printSortedByEyes,
-		addStudent,
-		removeStudent,
-		terminateCMD
-		]	
-
-	selections = [
-		"sortByAge",
-		"sortByLName",
-		"sortByFName",
-		"sortByWeight",
-		"sortByHeight",
-		"sortByHair",
-		"sortByEyes",
-		"addStudent",
-		"removeStudent",
-		"terminateCMD"
-		]
-
+	selections = {
+		"sortByAge" : printSortByAge,
+		"sortByLName" : printSortByLName,
+		"sortByFName" : printSortByFName,
+		"sortByWeight" : printSortByWeight,
+		"sortByHeight" : printSortByHeight,
+		"sortByHair" : printSortByHair,
+		"sortByEyes" : printSortByEyes,
+		"addStudent" : addStudent,
+		"removeStudent" : removeStudent,
+		"terminateCMD" : terminateCMD
+		}
 
 	T = True
 	while T:
-		selection = userSelection()
-		functions[selection.index(selection)] (students)
-	"""
-	T = True
-
-	while T: 
 		printHeader()
 		selection = userSelection()
-		if selection == "sortByAge":
-			printSortedByAge(students)
-		elif selection == "sortByLName":
-			printSortedByLName(students)
-		elif selection == "sortByFName":
-			printSortedByFName(students)
-		elif selection == "sortByWeight":
-			printSortedByWeight(students)
-		elif selection == "sortByHeight":
-			printSortedByHeight(students)
-		elif selection == "sortByHair":
-			printSortedByHair(students)
-		elif selection == "sortByEyes":
-			printSortedByEyes(students)
-		elif selection == "addStudent":
-			addStudent(students)
-		elif selection == "removeStudent":
-			reomveStudent(students)
-		elif selection == "terminateCMD":
-			terminateCMD()
-			T = False
-		else:
-			print ("SELECTION IS NOT RECOGNIZED...")
-"""
+		selections[selection] (students)
 
 class Student:
 	def __init__(self, lastName, firstName, age, weight, height, hair, eyes):
@@ -116,47 +72,47 @@ def addStudent(students):
 	newStudentEyes = input("ENTER EYE COLOR: ")
 	students.append(Student(newStudentLName, newStudentFName, newStudentAge, newStudentWeight, newStudentHeight, newStudentHair, newStudentEyes))
 
-def reomveStudent(students):
+def removeStudent(students):
 	print ("<<<REMOVE STUDENT>>>")
 	indexRemoved = int(input("ENTER INDEX OF STUDENT: "))
 	print ("REMOVED " + students[indexRemoved].lastName + " FROM LIST")
 	students.pop(indexRemoved)
 
-def printSortedByAge(students):
+def printSortByAge(students):
 	print ("<<<STUDENTS SORTED BY AGE>>>")
 	sortStudents = sorted(students, key=lambda student: student.age)
 	for student in sortStudents:
 		print (str(student.age) + "yr" + ", " + student.lastName + ", " + student.firstName + ", " + str(student.weight) + "lb" + ", " + str(student.height) + "in" + ", " + student.hair + " hair" + ", " + student.eyes + " eyes")
 
-def printSortedByLName(students):
+def printSortByLName(students):
 	print ("<<<STUDENTS SORTED BY LAST NAME>>>")
 	sortStudents = sorted(students, key=lambda student: student.lastName)
 	for student in sortStudents:
 		print (student.lastName + ", " + student.firstName + ", " + str(student.age) + "yr" + ", " + str(student.weight) + "lb" + ", " + str(student.height) + "in" + ", " + student.hair + " hair" + ", " + student.eyes + " eyes")
 
-def printSortedByFName(students):
+def printSortByFName(students):
 	print ("<<<STUDENTS SORTED BY FIRST NAME>>>")
 	sortStudents = sorted(students, key=lambda student: student.firstName)
 	for student in sortStudents:
 		print (student.firstName + ", " + student.lastName + ", " + str(student.age) + "yr" + ", " + str(student.weight) + "lb" + ", " + str(student.height) + "in" + ", " + student.hair + " hair" + ", " + student.eyes + " eyes")
 
-def printSortedByWeight(students):
+def printSortByWeight(students):
 	print ( "<<<STUDENTS SORTED BY WEIGHT>>>")
 	sortStudents = sorted(students, key=lambda student: student.weight)
 	for student in sortStudents:
 		print (str(student.weight) + "lb" + ", " + student.lastName + ", " + student.firstName + ", " + str(student.age) + "yr" + ", " + str(student.height) + "in" + ", " + student.hair + " hair" + ", " + student.eyes + " eyes")
 
-def printSortedByHeight(students):
+def printSortByHeight(students):
 	sortStudents = sorted(students, key=lambda student: student.height)
 	for student in sortStudents:
 		print (str(student.height) + "in" + ", " + student.lastName + ", " + student.firstName + ", " + str(student.age) + "yr" + ", " + str(student.weight) + "lb" + ", " + student.hair + " hair" + ", " + student.eyes + " eyes")
 
-def printSortedByHair(students):
+def printSortByHair(students):
 	sortStudents = sorted(students, key=lambda student: student.hair)
 	for student in sortStudents:
 		print (student.hair + " hair" + ", " + student.lastName + ", " + student.firstName + ", " + str(student.age) + "yr" + ", " + str(student.weight) + "lb" + ", " + str(student.height) + "in" + ", " + student.eyes + "eyes")
 
-def printSortedByEyes(students):
+def printSortByEyes(students):
 	sortStudents = sorted(students, key=lambda student: student.eyes)
 	for student in sortStudents:
 		print (student.eyes + " eyes" + ", " + student.lastName + ", " + student.firstName + ", " + str(student.age) + "yr" + ", " + str(student.weight) + "lb" + ", " + str(student.height) + "in" + ", " + student.hair + " hair")
