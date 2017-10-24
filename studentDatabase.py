@@ -1,6 +1,18 @@
 #studentDatabase.py 
 #by Lukas Odrzywolski
+import sqlalchemy
+from sqlalchemy import create_engine
+from sqlalchemy import Table, Column, Integer, String, MetaData, ForeignKey
+#from sqlalchemy import random
+from sqlalchemy.sql import text
+
+engine = create_engine('sqlite:///:studentDB:', echo=True)
+
 def main():
+	conn = engine.connect()
+	metadata = MetaData()
+	createTables(metadata, conn)
+	
 	students = [
 		Student("Odrzywolski", "Lukas", 16, 145, 68, "Blonde", "Blue"),
 		Student("Pillsbury", "Silas", 16, 120, 71, "Brown", "Blue"),
