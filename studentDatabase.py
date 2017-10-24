@@ -6,13 +6,13 @@ from sqlalchemy import Table, Column, Integer, String, MetaData, ForeignKey
 #from sqlalchemy import random
 from sqlalchemy.sql import text
 
-engine = create_engine('sqlite:///:studentDB:', echo=True)
+engine = create_engine('sqlite:///studentDB.db', echo=True)
 
 def main():
 	conn = engine.connect()
 	metadata = MetaData()
 	createTables(metadata, conn)
-	
+
 	students = [
 		Student("Odrzywolski", "Lukas", 16, 145, 68, "Blonde", "Blue"),
 		Student("Pillsbury", "Silas", 16, 120, 71, "Brown", "Blue"),
@@ -50,6 +50,17 @@ class Student:
 		self.height = height
 		self.hair = hair
 		self.eyes = eyes
+
+def createTables(metadata, conn):
+	users = Table('students', metadata,
+		Column("lastName", String),
+		Column("firstName", String),
+		Column("age", Integer, primary_key=True),
+		Column("weight", Integer, primary_key=True),
+		Column("height", Integer, primary_key=True),
+		Column("hair", String),
+		Column("eyes", String))
+	metadata.create_all(engine)
 
 def printHeader():
 		print ("---LIST OF COMMANDS---")
