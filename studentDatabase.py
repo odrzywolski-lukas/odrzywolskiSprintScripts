@@ -13,11 +13,11 @@ def main():
 	metadata = MetaData()
 	createTables(metadata, conn)
 
-	students = [
-		Student("Odrzywolski", "Lukas", 16, 145, 68, "Blonde", "Blue"),
-		Student("Pillsbury", "Silas", 16, 120, 71, "Brown", "Blue"),
-		Student("Dussault", "Riley", 16, 120, 69, "Blonde", "Brown"), 
-	]
+	# students = [
+	# 	Student("Odrzywolski", "Lukas", 16, 145, 68, "Blonde", "Blue"),
+	# 	Student("Pillsbury", "Silas", 16, 120, 71, "Brown", "Blue"),
+	# 	Student("Dussault", "Riley", 16, 120, 69, "Blonde", "Brown"), 
+	# ]
 
 	selections = {
 		"sortByAge" : printSortByAge,
@@ -52,12 +52,12 @@ class Student:
 		self.eyes = eyes
 
 def createTables(metadata, conn):
-	users = Table('students', metadata,
+	students = Table('students', metadata,
 		Column("lastName", String),
 		Column("firstName", String),
-		Column("age", Integer, primary_key=True),
-		Column("weight", Integer, primary_key=True),
-		Column("height", Integer, primary_key=True),
+		Column("age", Integer),
+		Column("weight", Integer),
+		Column("height", Integer),
 		Column("hair", String),
 		Column("eyes", String))
 	metadata.create_all(engine)
