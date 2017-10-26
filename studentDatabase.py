@@ -1,9 +1,9 @@
 #studentDatabase.py 
 #by Lukas Odrzywolski
+
 import sqlalchemy
 from sqlalchemy import create_engine
 from sqlalchemy import Table, Column, Integer, String, MetaData, ForeignKey
-#from sqlalchemy import random
 from sqlalchemy.sql import text
 
 engine = create_engine('sqlite:///studentDB.db', echo=True)
@@ -12,34 +12,38 @@ def main():
 	conn = engine.connect()
 	metadata = MetaData()
 	createTables(metadata, conn)
+	statement = text("INSERT INTO students (lastName, firstName, age, weight, height, hair, eyes)") values ("Odrzywolski", "Lukas", 16, 145, 68, "Blonde", "Blue")
+	conn.execute(statement)
+
+	query = text("Select * from students")
+	result = conn.execute(query).fetchall()
+	print (result)
 
 	# students = [
-	# 	Student("Odrzywolski", "Lukas", 16, 145, 68, "Blonde", "Blue"),
-	# 	Student("Pillsbury", "Silas", 16, 120, 71, "Brown", "Blue"),
-	# 	Student("Dussault", "Riley", 16, 120, 69, "Blonde", "Brown"), 
+	# 	Student("Odrzywolski", "Lukas", 16, 145, 68, "Blonde", "Blue"), 
 	# ]
 
-	selections = {
-		"sortByAge" : printSortByAge,
-		"sortByLName" : printSortByLName,
-		"sortByFName" : printSortByFName,
-		"sortByWeight" : printSortByWeight,
-		"sortByHeight" : printSortByHeight,
-		"sortByHair" : printSortByHair,
-		"sortByEyes" : printSortByEyes,
-		"addStudent" : addStudent,
-		"removeStudent" : removeStudent,
-		"terminateCMD" : False
-		}
+selections = {
+	"sortByAge" : printSortByAge,
+	"sortByLName" : printSortByLName,
+	"sortByFName" : printSortByFName,
+	"sortByWeight" : printSortByWeight,
+	"sortByHeight" : printSortByHeight,
+	"sortByHair" : printSortByHair,
+	"sortByEyes" : printSortByEyes,
+	"addStudent" : addStudent,
+	"removeStudent" : removeStudent,
+	"terminateCMD" : False
+	}
 
-	while True:
-		printHeader()
-		selection = userSelection()
-		if selections[selection]:
-			selections[selection] (students)
-		else:
-			print ("TERMINATING COMMAND LINE...")
-			break
+while True:
+	printHeader()
+	selection = userSelection()
+	if selections[selection]:
+		selections[selection] (students)
+	else:
+		print ("TERMINATING COMMAND LINE...")
+		break
 
 class Student:
 	def __init__(self, lastName, firstName, age, weight, height, hair, eyes):
