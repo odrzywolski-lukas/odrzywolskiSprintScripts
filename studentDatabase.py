@@ -12,10 +12,11 @@ def main():
 	conn = engine.connect()
 	metadata = MetaData()
 	createTables(metadata, conn)
-	statement = text("INSERT INTO students (lastName, firstName, age, weight, height, hair, eyes)") values ("Odrzywolski", "Lukas", 16, 145, 68, "Blonde", "Blue")
+	statement = text("INSERT INTO students (age, weight, height, hair, eyes)"
+		"VALUES(Odrzywolski', 'Lukas', 16, 145, 68, 'Blonde', 'Blue')")
 	conn.execute(statement)
 
-	query = text("Select * from students")
+	query = text("SELECT * from students JOIN ")
 	result = conn.execute(query).fetchall()
 	print (result)
 
@@ -23,27 +24,39 @@ def main():
 	# 	Student("Odrzywolski", "Lukas", 16, 145, 68, "Blonde", "Blue"), 
 	# ]
 
-selections = {
-	"sortByAge" : printSortByAge,
-	"sortByLName" : printSortByLName,
-	"sortByFName" : printSortByFName,
-	"sortByWeight" : printSortByWeight,
-	"sortByHeight" : printSortByHeight,
-	"sortByHair" : printSortByHair,
-	"sortByEyes" : printSortByEyes,
-	"addStudent" : addStudent,
-	"removeStudent" : removeStudent,
-	"terminateCMD" : False
-	}
+	selections = {
+		"sortByAge" : printSortByAge,
+		"sortByLName" : printSortByLName,
+		"sortByFName" : printSortByFName,
+		"sortByWeight" : printSortByWeight,
+		"sortByHeight" : printSortByHeight,
+		"sortByHair" : printSortByHair,
+		"sortByEyes" : printSortByEyes,
+		"addStudent" : addStudent,
+		"removeStudent" : removeStudent,
+		"terminateCMD" : False
+		}
+	inputQuestions = [
+			"FOR STUDENTS BY AGE, type sortByAge",
+			"FOR STUDENTS BY LAST NAME, type sortByLName",
+			"FOR STUDENTS BY FIRST NAME, type sortByFName",
+			"FOR STUDENTS BY WEIGHT, type sortByWeight",
+			"FOR STUDENTS BY HEIGHT, type sortByHeight",
+			"FOR STUDENTS BY HAIR COLOR, type sortByHair",
+			"FOR STUDENTS BY EYE COLOR, type sortByEyes",
+			"TO ADD A STUDENT, type addStudent",
+			"TO REMOVE A STUDENT, type removeStudent",
+			"TO TERMINATE COMMAND LINE, type terminateCMD",
+		]
 
-while True:
-	printHeader()
-	selection = userSelection()
-	if selections[selection]:
-		selections[selection] (students)
-	else:
-		print ("TERMINATING COMMAND LINE...")
-		break
+	while True:
+		printHeader()
+		selection = userSelection()
+		if selections[selection]:
+			selections[selection] (students)
+		else:
+			print ("TERMINATING COMMAND LINE...")
+			break
 
 class Student:
 	def __init__(self, lastName, firstName, age, weight, height, hair, eyes):
@@ -66,21 +79,13 @@ def createTables(metadata, conn):
 		Column("eyes", String))
 	metadata.create_all(engine)
 
+# def initiateTables(metadata, conn):
+# 	for student in students:
+# 		statement = text("INSERT INTO students (age, weight, height, hair, eyes)"
+# 			"VALUES(Odrzywolski', 'Lukas', 16, 145, 68, 'Blonde', 'Blue')")
+
 def printHeader():
 		print ("---LIST OF COMMANDS---")
-
-inputQuestions = [
-		"FOR STUDENTS BY AGE, type sortByAge",
-		"FOR STUDENTS BY LAST NAME, type sortByLName",
-		"FOR STUDENTS BY FIRST NAME, type sortByFName",
-		"FOR STUDENTS BY WEIGHT, type sortByWeight",
-		"FOR STUDENTS BY HEIGHT, type sortByHeight",
-		"FOR STUDENTS BY HAIR COLOR, type sortByHair",
-		"FOR STUDENTS BY EYE COLOR, type sortByEyes",
-		"TO ADD A STUDENT, type addStudent",
-		"TO REMOVE A STUDENT, type removeStudent",
-		"TO TERMINATE COMMAND LINE, type terminateCMD",
-	]
 
 def userSelection():
 	for inputQuestion in inputQuestions:
@@ -88,21 +93,10 @@ def userSelection():
 	return input("Enter selection here and press enter:")
 
 def addStudent(students):
-	print ("<<<ADD STUDENTS>>>")
-	newStudentLName = input("ENTER LAST NAME: ")
-	newStudentFName = input("ENTER FIRST NAME: ")
-	newStudentAge = int(input("ENTER AGE: "))
-	newStudentWeight = int(input("ENTER WEIGHT: "))
-	newStudentHeight = int(input("ENTER HEIGHT: "))
-	newStudentHair = input("ENTER HAIR COLOR: ")
-	newStudentEyes = input("ENTER EYE COLOR: ")
-	students.append(Student(newStudentLName, newStudentFName, newStudentAge, newStudentWeight, newStudentHeight, newStudentHair, newStudentEyes))
+	pass
 
 def removeStudent(students):
-	print ("<<<REMOVE STUDENT>>>")
-	indexRemoved = int(input("ENTER INDEX OF STUDENT: "))
-	print ("REMOVED " + students[indexRemoved].lastName + " FROM LIST")
-	students.pop(indexRemoved)
+	pass
 
 def printSortByAge(students):
 	print ("<<<STUDENTS SORTED BY AGE>>>")
