@@ -1,36 +1,43 @@
-.menu{
+.home{
   display: flex;
 }
-.foodItem {
+.student {
   display: flex;
   flex-direction: column;
 }
-.foodItem .header{
+.student .header{
   display: flex;
   flex-direction: row;
 }
-.name{
+.lastName{
+  display: flex;
+  font-weight: italic;
+  background: #FFFFFF; 
+  color: #000000;
+  flex: 3;
+}
+.firstName{
+  display: flex;
+  font-weight: italic;
+  background: #FFFFFF; 
+  color: #000000;
   flex: 2;
 }
-.cost{
-  flex: 1;
-}
-.ingredients{
+.aspects{
   display: flex;
-  margin: 2px;
+  margin: 4px;
   padding: 0px;
-  border: 2px solid green;
-  box-shadow: 1px 1px 2px #dddddd;
+  border: 2px solid blue;
   flex-direction:column;
 }
-.ingredients:before{
-  content: "Ingredients";
+.aspects:before{
+  content: "Aspects";
   font-weight: bold;
-  background: #00AA00;
-  color: #DDFFDD;
+  background: #0000FF;
+  color: #FFFFFF;
 }
 
-.ingredient, .ingredients:before{
+.aspect, .aspects:before{
   flex: 1;
   padding: 0.5em;
 }
