@@ -39,5 +39,8 @@
 
 .aspect, .aspects:before{
   flex: 1;
-  padding: 0.5em;
+  padding: 0.25em;
+}
+.button{
+  flex-direction: row-reverse;
 }
