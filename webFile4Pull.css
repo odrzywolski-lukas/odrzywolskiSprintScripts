@@ -11,16 +11,12 @@
 }
 .lastName{
   display: flex;
-  font-weight: italic;
-  background: #FFFFFF; 
-  color: #000000;
+  font-style: italic;
   flex: 3;
 }
 .firstName{
   display: flex;
-  font-weight: italic;
-  background: #FFFFFF; 
-  color: #000000;
+  font-style: italic;
   flex: 2;
 }
 .aspects{
@@ -36,11 +32,23 @@
   background: #0000FF;
   color: #FFFFFF;
 }
-
 .aspect, .aspects:before{
   flex: 1;
   padding: 0.25em;
 }
 .button{
-  flex-direction: row-reverse;
+  -webkit-transition-duration: 0.4s;
+  transition-duration: 0.4s;
+  background-color: #0000FF; 
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+}
+.button:hover{
+  background-color: white;
+  color: #0000FF;
 }
