@@ -52,3 +52,11 @@
   background-color: white;
   color: #0000FF;
 }
+.quotes{
+  display: flex;
+}
+.quoted{
+  display: flex;
+  font-style: italic;
+  flex: 2;
+}
