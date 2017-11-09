@@ -27,7 +27,7 @@
   flex-direction:column;
 }
 .aspects:before{
-  content: "Aspects";
+  content: "Info";
   font-weight: bold;
   background: #0000FF;
   color: #FFFFFF;
