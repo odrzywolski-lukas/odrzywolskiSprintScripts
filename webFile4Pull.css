@@ -1,5 +1,6 @@
 .home{
   display: flex;
+  justify-content: end;
 }
 .student {
   display: flex;
@@ -7,7 +8,7 @@
 }
 .student .header{
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
 }
 .lastName{
   display: flex;
@@ -31,6 +32,9 @@
   font-weight: bold;
   background: #0000FF;
   color: #FFFFFF;
+}
+.websiteLink{
+
 }
 .aspect, .aspects:before{
   flex: 1;
