@@ -1,0 +1,68 @@
+<head>
+  <title>Pumpkin Pie Recipe</title>
+  <style>
+    .recipe-wrapper{
+      display: flex;
+    }
+    .recipe, .ingredients{
+      padding: 4px;
+      margin: 4px;
+    }
+    .recipe{
+      background-color: #FFDD88;
+      counter-reset: section;
+      flex: 2;
+    }
+    .recipe div::before{
+      counter-increment: section;
+      content: counter(section) ".";
+      padding-right: 2px;
+    }
+    .ingredients{
+      background-color: #FFEEAA;
+      flex: 1;
+      display: flex;
+      flex-wrap: wrap;
+    }
+    .ingredients div{
+      flex-grow: 1;
+      flex-shrink: 0;
+    }
+    .ingredients div, .recipe div{
+      padding: 2px;
+    }
+    .ingredients div:nth-child(even){
+      background-color: white;
+    }
+    .recipe div:nth-child(odd){
+      background-color: white;
+    }
+  </style>
+</head>
+<body>
+  <h1>Pumpkin Pie Recipe</h1>  
+  <div class="recipe-wrapper">
+    <div class="ingredients">
+      <div>1 can pumpkin puree</div>
+      <div>1 can sweetened condensed milk</div>
+      <div>2 large eggs</div>
+      <div>1 tsp vanilla</div>
+      <div>1 tsp cinnamon</div>
+      <div>1/2 tsp salt</div>
+      <div>1/2 ounce butter</div>
+      <div>1/4 tsp nutmeg</div>
+      <div>1/4 tsp clove</div>
+      <div>1 tbsp bourbon</div>
+    </div>
+    <div class="recipe">
+        <div>Preheat oven to 375 degrees.</div>
+        <div>While oven is preheating, melt the butter in a saucepan over medium-high heat.</div>
+        <div>Add clove, nutmeg, cinnamon, and any other desired spices to the butter for one minute or until spices become aromatic.</div>
+        <div>Reduce heat to low and add pumpkin puree and bourbon to the saucepan. Stir as mixture cools.</div>
+        <div>Add condensed milk to saucepan. Stir until mixture is a smooth pastel orange. Remove from heat.</div>
+        <div>While mixture cools, beat the eggs in a separate bowl.</div>
+        <div>Fold eggs into mixture.</div>
+        <div>Pour mixture into pie shell and bake for 30-45 minutes, or until top of pie begins to puff slightly.</div>
+    </div>
+  </div>
+</body>
