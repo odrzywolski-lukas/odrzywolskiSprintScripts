@@ -1,68 +1,181 @@
 <head>
   <title>Pumpkin Pie Recipe</title>
+  <script src="https://unpkg.com/vue"></script>
   <style>
+    body {
+      background-color: #FFFEDD;
+      font-family: sans-serif;
+      margin: 0;
+    }
+
+
+    .header{
+      user-select: none;
+      background-color: #442200;
+      color: #FFFEEE;
+      padding-top: 4px;
+      padding-bottom: 16px;
+      margin: 0;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-size: 24px;
+      cursor: 
+    }
+
+    .nav-arrow{
+      margin: 0;
+      padding: 0 30px;
+      user-select: none;
+
+    }
+
+
     .recipe-wrapper{
       display: flex;
     }
+
     .recipe, .ingredients{
-      padding: 4px;
       margin: 4px;
+      border: 4px solid #442200;
+      border-radius: 2px;
     }
+
     .recipe{
       background-color: #FFDD88;
       counter-reset: section;
-      flex: 2;
+      flex: 1;
     }
-    .recipe div::before{
+
+    .recipe div::before {
       counter-increment: section;
       content: counter(section) ".";
       padding-right: 2px;
+
     }
-    .ingredients{
-      background-color: #FFEEAA;
-      flex: 1;
+
+    .ingredients {
+      background-color: #7d5515;
       display: flex;
-      flex-wrap: wrap;
+      flex-flow: row wrap;
+      justify-content: stretch;
+      flex: 0.5;
     }
-    .ingredients div{
-      flex-grow: 1;
+
+    .ingredients div {
+      background-color: #FEFEFE;
+      margin: 4px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
       flex-shrink: 0;
+      flex-grow: 1;
+
     }
     .ingredients div, .recipe div{
-      padding: 2px;
+      padding: 4px;
     }
-    .ingredients div:nth-child(even){
+
+    .recipe div:nth-child(even) {
       background-color: white;
     }
-    .recipe div:nth-child(odd){
-      background-color: white;
-    }
+
+  }
   </style>
 </head>
+
 <body>
-  <h1>Pumpkin Pie Recipe</h1>  
-  <div class="recipe-wrapper">
-    <div class="ingredients">
-      <div>1 can pumpkin puree</div>
-      <div>1 can sweetened condensed milk</div>
-      <div>2 large eggs</div>
-      <div>1 tsp vanilla</div>
-      <div>1 tsp cinnamon</div>
-      <div>1/2 tsp salt</div>
-      <div>1/2 ounce butter</div>
-      <div>1/4 tsp nutmeg</div>
-      <div>1/4 tsp clove</div>
-      <div>1 tbsp bourbon</div>
+  <div id = "app">
+    <div class="header">
+     <div @click="switchRecipe(-1)" class="nav-arrow">◀</div>
+     <div>{{ recipe.title }}</div>
+     <div @click="switchRecipe(1)" class="nav-arrow">▶</div>
+    </div>  
+
+    <div class="recipe-wrapper">
+      <div class="ingredients">
+          <div class="ingredient" v-for="ingredient in recipe.ingredients">{{ ingredient }}</div>
+      </div>
+
+      <div class="recipe">
+          <div class="recipe-step" v-for="step in recipe.steps">{{ step }}</div>
+      </div>
     </div>
-    <div class="recipe">
-        <div>Preheat oven to 375 degrees.</div>
-        <div>While oven is preheating, melt the butter in a saucepan over medium-high heat.</div>
-        <div>Add clove, nutmeg, cinnamon, and any other desired spices to the butter for one minute or until spices become aromatic.</div>
-        <div>Reduce heat to low and add pumpkin puree and bourbon to the saucepan. Stir as mixture cools.</div>
-        <div>Add condensed milk to saucepan. Stir until mixture is a smooth pastel orange. Remove from heat.</div>
-        <div>While mixture cools, beat the eggs in a separate bowl.</div>
-        <div>Fold eggs into mixture.</div>
-        <div>Pour mixture into pie shell and bake for 30-45 minutes, or until top of pie begins to puff slightly.</div>
-    </div>
+      
   </div>
+
+  <script>
+    ;
+
+    var recipes = [
+      {
+        title: "Pumpkin Pie",
+        ingredients: [ "1 can pumpkin puree",
+          "1 can sweetened condensed milk",
+          "2 large eggs",
+          "1 tsp vanilla",
+          "1 tsp cinnamon",
+          "1/2 tsp salt",
+          "1/2 ounce butter",
+          "1/4 tsp nutmeg",
+          "1/4 tsp clove",
+          "1 tbsp bourbon",
+        ],
+        steps: [
+          "Preheat oven to 375 degrees.",
+          "While oven is preheating, melt the butter in a saucepan over medium-high heat.",
+          "Add clove, nutmeg, cinnamon, and any other desired spices to the butter for one minute or until spices become aromatic.",
+          "Reduce heat to low and add pumpkin puree and bourbon to the saucepan. Stir as mixture cools.",
+          "Add condensed milk to saucepan. Stir until mixture is a smooth pastel orange. Remove from heat.",
+          "While mixture cools, beat the eggs in a separate bowl.",
+          "Fold eggs into mixture.",
+          "Pour mixture into pie shell and bake for 30-45 minutes, or until top of pie begins to puff slightly.",
+        ],
+      },
+      {
+        title: "Hard-Boiled Eggs",
+        ingredients: [ "6 large eggs." ],
+        steps: [
+          "Put eggs in saucepan.",
+          "Fill a saucepan with water until eggs are covered.",
+          "Bring water to a boil.",
+          "Remove pot from heat and allow to cool.",
+        ],
+      },
+      {
+        title: "Soft-Boiled Eggs",
+        ingredients: [ "6 large eggs." ],
+        steps: [
+          "Fill a saucepan with enough watever to cover 6 eggs.",
+          "Bring water to a boil.",
+          "Reduce heat and allow water to come to a simmer.",
+          "Put eggs in saucepan.",
+          "Cook eggs for 5-7 minutes.",
+        ],
+      }      
+    ];
+
+    var recipeIndex = 0;
+
+    var app = new Vue({
+      el: '#app',
+      data: {
+        //we define the app data iself here
+        recipe: recipes[0],
+      },
+      methods: {
+        switchRecipe: function(delta) {
+          recipeIndex += delta;
+          if(recipeIndex < 0){
+            recipeIndex += recipes.length;
+          }
+          recipeIndex = recipeIndex % recipes.length;
+          this.recipe = recipes[recipeIndex];
+
+        }
+      }
+    });
+  </script>
+
 </body>
