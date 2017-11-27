@@ -3,67 +3,55 @@
   <script src="https://unpkg.com/vue"></script>
   <style>
     body {
-      background-color: #FFFEDD;
+      background-color: #FFFFFF;
       font-family: sans-serif;
       margin: 0;
     }
-
-
     .header{
       user-select: none;
-      background-color: #442200;
-      color: #FFFEEE;
-      padding-top: 4px;
-      padding-bottom: 16px;
+      background-color: #0000FF;
+      color: #FFFFFF;
+      padding-top: 8px;
+      padding-bottom: 12px;
       margin: 0;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      font-size: 24px;
+      font-size: 20px;
       cursor: 
     }
-
     .nav-arrow{
       margin: 0;
-      padding: 0 30px;
+      padding: 0 24px;
       user-select: none;
-
     }
-
-
     .recipe-wrapper{
       display: flex;
     }
-
     .recipe, .ingredients{
       margin: 4px;
-      border: 4px solid #442200;
+      border: 4px solid #0000FF;
       border-radius: 2px;
     }
-
     .recipe{
-      background-color: #FFDD88;
+      background-color: #AAAAFF;
       counter-reset: section;
       flex: 1;
     }
-
     .recipe div::before {
       counter-increment: section;
-      content: counter(section) ".";
+      content: counter(section) ". ";
       padding-right: 2px;
-
     }
-
     .ingredients {
-      background-color: #7d5515;
+      background-color: #AAAAFF;
       display: flex;
       flex-flow: row wrap;
       justify-content: stretch;
       flex: 0.5;
     }
-
     .ingredients div {
-      background-color: #FEFEFE;
+      background-color: #FFFFFF;
       margin: 4px;
       display: flex;
       flex-direction: column;
@@ -71,20 +59,16 @@
       align-items: center;
       flex-shrink: 0;
       flex-grow: 1;
-
     }
     .ingredients div, .recipe div{
       padding: 4px;
     }
-
     .recipe div:nth-child(even) {
       background-color: white;
     }
-
   }
   </style>
 </head>
-
 <body>
   <div id = "app">
     <div class="header">
@@ -92,7 +76,6 @@
      <div>{{ recipe.title }}</div>
      <div @click="switchRecipe(1)" class="nav-arrow">▶</div>
     </div>  
-
     <div class="recipe-wrapper">
       <div class="ingredients">
           <div class="ingredient" v-for="ingredient in recipe.ingredients">{{ ingredient }}</div>
@@ -101,13 +84,10 @@
       <div class="recipe">
           <div class="recipe-step" v-for="step in recipe.steps">{{ step }}</div>
       </div>
-    </div>
-      
+    </div> 
   </div>
-
   <script>
     ;
-
     var recipes = [
       {
         title: "Pumpkin Pie",
@@ -155,7 +135,6 @@
         ],
       }      
     ];
-
     var recipeIndex = 0;
 
     var app = new Vue({
@@ -172,10 +151,8 @@
           }
           recipeIndex = recipeIndex % recipes.length;
           this.recipe = recipes[recipeIndex];
-
         }
       }
     });
   </script>
-
 </body>
