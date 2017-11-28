@@ -1,0 +1,131 @@
+<head>
+  <title>Home</title>
+  <script src="https://unpkg.com/vue"></script>
+  <style>
+    body {
+        background-color: #FFFFFF;
+        font-family: sans-serif;
+        margin: 0;
+      }
+      .home{
+        display: flex;
+        flex-direction: column;
+      }
+      .student {
+        display: flex;
+        flex-direction: column;
+      }
+      .student .header{
+        display: flex;
+        flex-direction: column;
+      }
+      .lastName{
+        display: flex;
+        font-style: italic;
+        flex: 3;
+      }
+      .firstName{
+        display: flex;
+        font-style: italic;
+        flex: 2;
+      }
+      .aspects{
+        display: flex;
+        margin: 4px;
+        padding: 0px;
+        border: 2px solid blue;
+        flex-direction:column;
+      }
+      .aspects:before{
+        content: "Info";
+        font-weight: bold;
+        background: #0000FF;
+        color: #FFFFFF;
+      }
+      .websiteLink{
+
+      }
+      .aspect, .aspects:before{
+        flex: 1;
+        padding: 0.25em;
+      }
+      .button{
+        -webkit-transition-duration: 0.4s;
+        transition-duration: 0.4s;
+        background-color: #0000FF; 
+        border: none;
+        color: white;
+        padding: 15px 32px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+      }
+      .button:hover{
+        background-color: white;
+        color: #0000FF;
+      }
+      .quotes{
+        display: flex;
+      }
+      .quoted{
+        display: flex;
+        font-style: italic;
+        flex: 2;
+      }
+    }
+  </style>
+</head>
+<body>
+    <h1>Home</h1>
+    <div class="content">
+      <div class="Home">
+        <div class="student">
+          <div class="name">
+            <div class="lastName">Odrzywolski</div>
+            <div class="firstName">Lukas</div>
+          </div>
+          <div class="aspects">
+            <div class="age">16</div>
+            <div class="hieght">68</div>
+            <div class="weight">140</div>
+            <div class="eyeColor">Blue</div>
+            <div class="hairColor">Blonde</div>
+          </div>
+          <a class="button" href="file:///C:/Users/Baxter/Documents/repos/odrzywolskiSprintScripts/webPage.html" type="button">Lukas's Website</a>
+        </div>
+        <div class="student">
+          <div class="name">
+            <div class="lastName">Pillsbury</div>
+            <div class="firstName">Silas</div>
+          </div>
+          <div class="aspects">
+            <div class="age">16</div>
+            <div class="hieght">70</div>
+            <div class="weight">120</div>
+            <div class="eyeColor">Blue</div>
+            <div class="hairColor">Brown</div>
+          </div>
+        </div>
+        <div class="student">
+          <div class="name">
+            <div class="lastName">Dussaul</div>
+            <div class="firstName">Riley</div>
+          </div>
+          <div class="aspects">
+            <div class="age">16</div>
+            <div class="hieght">69</div>
+            <div class="weight">120</div>
+            <div class="eyeColor">Brown</div>
+            <div class="hairColor">Blonde</div>
+          </div>
+        </div>
+        <div>
+          <a class="button" href="http://minesweeperonline.com/#150" type="button">minesweeper</a>
+          <a class="button" href="http://i1.kym-cdn.com/photos/images/newsfeed/001/091/264/665.jpg" type="button">guess what day it is</a>
+          <a class="button" href="file:///C:/Users/Baxter/Documents/repos/odrzywolskiSprintScripts/webPageQuotes.html" type="button">quotes</a>
+          <a class="button" href="http://baxter.slatepowered.net/dashboard" type="button">slate</a>
+        </div>
+      </div>
+    </div>
+</body>
