@@ -1,15 +1,20 @@
 <head>
-  <title>Home</title>
+  <title>Student Hub</title>
   <script src="https://unpkg.com/vue"></script>
   <style>
     body {
         background-color: #FFFFFF;
         font-family: sans-serif;
-        margin: 0;
+        margin: 8;
       }
       .home{
         display: flex;
         flex-direction: column;
+      }
+      .h1{
+        display: flex;
+        flex-direction: column;
+        font-size: 16;
       }
       .student {
         display: flex;
@@ -42,8 +47,21 @@
         background: #0000FF;
         color: #FFFFFF;
       }
-      .websiteLink{
-
+      .web-link{
+        -webkit-transition-duration: 0.4s;
+        transition-duration: 0.4s;
+        background-color: #0000FF; 
+        border: none;
+        color: white;
+        padding: 4px 16px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+      }
+      .web-link:hover{
+        background-color: white;
+        color: #0000FF;
       }
       .aspect, .aspects:before{
         flex: 1;
@@ -92,8 +110,8 @@
             <div class="eyeColor">Blue</div>
             <div class="hairColor">Blonde</div>
           </div>
-          <a class="button" href="file:///C:/Users/Baxter/Documents/repos/odrzywolskiSprintScripts/webPage.html" type="button">Lukas's Website</a>
         </div>
+        <a class="web-link" href="file:///C:/Users/Baxter/Documents/repos/odrzywolskiSprintScripts/webSiteVue.html" type="button">Lukas's Website</a>
         <div class="student">
           <div class="name">
             <div class="lastName">Pillsbury</div>
@@ -123,7 +141,6 @@
         <div>
           <a class="button" href="http://minesweeperonline.com/#150" type="button">minesweeper</a>
           <a class="button" href="http://i1.kym-cdn.com/photos/images/newsfeed/001/091/264/665.jpg" type="button">guess what day it is</a>
-          <a class="button" href="file:///C:/Users/Baxter/Documents/repos/odrzywolskiSprintScripts/webPageQuotes.html" type="button">quotes</a>
           <a class="button" href="http://baxter.slatepowered.net/dashboard" type="button">slate</a>
         </div>
       </div>
