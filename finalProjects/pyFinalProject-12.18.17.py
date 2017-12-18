@@ -1,12 +1,12 @@
-#studentDatabase.py 
+#pyFinalProject-12/18/17.py 
 #by Lukas Odrzywolski
 def main():
-	students = [
-		Student("Odrzywolski", "Lukas", 16, 145, 68, "Blonde", "Blue"),
-		Student("Pillsbury", "Silas", 16, 120, 71, "Brown", "Blue"),
-		Student("Dussault", "Riley", 16, 120, 69, "Blonde", "Brown"),
-		Student("Palma", "Samantha", 16, 90, 60, "Brown", "Brown"),
-		Student("Lorenzo", "Jacob", 16, 120, 69, "Brown", "Brown"),
+	persons = [
+		Person("Odrzywolski", "Lukas", 16, 145, 68, "Blonde", "Blue"),
+		Person("Pillsbury", "Silas", 16, 120, 71, "Brown", "Blue"),
+		Person("Dussault", "Riley", 16, 120, 69, "Blonde", "Brown"),
+		Person("Palma", "Samantha", 16, 90, 60, "Brown", "Brown"),
+		Person("Lorenzo", "Jacob", 16, 120, 69, "Brown", "Brown"),
 	]
 
 	selections = {
@@ -17,8 +17,8 @@ def main():
 		"sortByHeight" : printSortByHeight,
 		"sortByHair" : printSortByHair,
 		"sortByEyes" : printSortByEyes,
-		"addStudent" : addStudent,
-		"removeStudent" : removeStudent,
+		"addPerson" : addPerson,
+		"removePerson" : removePerson,
 		"terminateCMD" : False,
 		}
 
@@ -26,12 +26,12 @@ def main():
 		printHeader()
 		selection = userSelection()
 		if selections[selection]:
-			selections[selection] (students)
+			selections[selection] (persons)
 		else:
 			print ("TERMINATING COMMAND LINE...")
 			break
 
-class Student:
+class Person:
 	def __init__(self, lastName, firstName, age, weight, height, hair, eyes):
 		self.lastName = lastName
 		self.firstName = firstName
@@ -45,15 +45,15 @@ def printHeader():
 		print ("---LIST OF COMMANDS---")
 
 inputQuestions = [
-		"FOR STUDENTS BY AGE, type sortByAge",
-		"FOR STUDENTS BY LAST NAME, type sortByLName",
-		"FOR STUDENTS BY FIRST NAME, type sortByFName",
-		"FOR STUDENTS BY WEIGHT, type sortByWeight",
-		"FOR STUDENTS BY HEIGHT, type sortByHeight",
-		"FOR STUDENTS BY HAIR COLOR, type sortByHair",
-		"FOR STUDENTS BY EYE COLOR, type sortByEyes",
-		"TO ADD A STUDENT, type addStudent",
-		"TO REMOVE A STUDENT, type removeStudent",
+		"FOR PERSONS BY AGE, type sortByAge",
+		"FOR PERSONS BY LAST NAME, type sortByLName",
+		"FOR PERSONS BY FIRST NAME, type sortByFName",
+		"FOR PERSONS BY WEIGHT, type sortByWeight",
+		"FOR PERSONS BY HEIGHT, type sortByHeight",
+		"FOR PERSONS BY HAIR COLOR, type sortByHair",
+		"FOR PERSONS BY EYE COLOR, type sortByEyes",
+		"TO ADD A PERSONS, type addPerson",
+		"TO REMOVE A PERSONS, type removePerson",
 		"TO TERMINATE COMMAND LINE, type terminateCMD",
 	]
 
@@ -62,47 +62,50 @@ def userSelection():
 		print (inputQuestion)
 	return input("Enter selection here and press enter:")
 
-def printSortByAge(students):
-	print ("<<<STUDENTS SORTED BY AGE>>>")
-	sortStudents = sorted(students, key=lambda student: student.age)
-	for student in sortStudents:
-		print (str(student.age) + "yr" + ", " + student.lastName + ", " + student.firstName + ", " + str(student.weight) + "lb" + ", " + str(student.height) + "in" + ", " + student.hair + " hair" + ", " + student.eyes + " eyes")
+def printSortByAge(persons):
+	print ("<<<PERSONS SORTED BY AGE>>>")
+	sortPersons = sorted(persons, key=lambda student: person.age)
+	for student in sortPersons:
+		print (str(person.age) + "yr" + ", " + person.lastName + ", " + person.firstName + ", " + str(person.weight) + "lb" + ", " + str(person.height) + "in" + ", " + person.hair + " hair" + ", " + person.eyes + " eyes")
 
-def printSortByLName(students):
-	print ("<<<STUDENTS SORTED BY LAST NAME>>>")
-	sortStudents = sorted(students, key=lambda student: student.lastName)
-	for student in sortStudents:
-		print (student.lastName + ", " + student.firstName + ", " + str(student.age) + "yr" + ", " + str(student.weight) + "lb" + ", " + str(student.height) + "in" + ", " + student.hair + " hair" + ", " + student.eyes + " eyes")
+def printSortByLName(persons):
+	print ("<<<PERSONS SORTED BY LAST NAME>>>")
+	sortPersons = sorted(persons, key=lambda student: person.lastName)
+	for student in sortPersons:
+		print (person.lastName + ", " + person.firstName + ", " + str(person.age) + "yr" + ", " + str(person.weight) + "lb" + ", " + str(person.height) + "in" + ", " + person.hair + " hair" + ", " + person.eyes + " eyes")
 
-def printSortByFName(students):
-	print ("<<<STUDENTS SORTED BY FIRST NAME>>>")
-	sortStudents = sorted(students, key=lambda student: student.firstName)
-	for student in sortStudents:
-		print (student.firstName + ", " + student.lastName + ", " + str(student.age) + "yr" + ", " + str(student.weight) + "lb" + ", " + str(student.height) + "in" + ", " + student.hair + " hair" + ", " + student.eyes + " eyes")
+def printSortByFName(persons):
+	print ("<<<PERSONS SORTED BY FIRST NAME>>>")
+	sortPersons = sorted(persons, key=lambda student: person.firstName)
+	for student in sortPersons:
+		print (person.firstName + ", " + person.lastName + ", " + str(person.age) + "yr" + ", " + str(person.weight) + "lb" + ", " + str(person.height) + "in" + ", " + person.hair + " hair" + ", " + person.eyes + " eyes")
 
-def printSortByWeight(students):
-	print ( "<<<STUDENTS SORTED BY WEIGHT>>>")
-	sortStudents = sorted(students, key=lambda student: student.weight)
-	for student in sortStudents:
-		print (str(student.weight) + "lb" + ", " + student.lastName + ", " + student.firstName + ", " + str(student.age) + "yr" + ", " + str(student.height) + "in" + ", " + student.hair + " hair" + ", " + student.eyes + " eyes")
+def printSortByWeight(persons):
+	print ( "<<<PERSONS SORTED BY WEIGHT>>>")
+	sortPersons = sorted(persons, key=lambda student: person.weight)
+	for student in sortPersons:
+		print (str(person.weight) + "lb" + ", " + person.lastName + ", " + person.firstName + ", " + str(person.age) + "yr" + ", " + str(person.height) + "in" + ", " + person.hair + " hair" + ", " + person.eyes + " eyes")
 
-def printSortByHeight(students):
-	sortStudents = sorted(students, key=lambda student: student.height)
-	for student in sortStudents:
-		print (str(student.height) + "in" + ", " + student.lastName + ", " + student.firstName + ", " + str(student.age) + "yr" + ", " + str(student.weight) + "lb" + ", " + student.hair + " hair" + ", " + student.eyes + " eyes")
+def printSortByHeight(persons):
+	print ("<<<PERSONS SORTED BY HEIGHT>>>")
+	sortPersons = sorted(persons, key=lambda student: person.height)
+	for student in sortPersons:
+		print (str(person.height) + "in" + ", " + person.lastName + ", " + person.firstName + ", " + str(person.age) + "yr" + ", " + str(person.weight) + "lb" + ", " + person.hair + " hair" + ", " + person.eyes + " eyes")
 
-def printSortByHair(students):
-	sortStudents = sorted(students, key=lambda student: student.hair)
-	for student in sortStudents:
-		print (student.hair + " hair" + ", " + student.lastName + ", " + student.firstName + ", " + str(student.age) + "yr" + ", " + str(student.weight) + "lb" + ", " + str(student.height) + "in" + ", " + student.eyes + "eyes")
+def printSortByHair(persons):
+	print ("<<<PERSONS SORTED BY HAIR COLOR")
+	sortPersons = sorted(persons, key=lambda student: person.hair)
+	for student in sortPersons:
+		print (person.hair + " hair" + ", " + person.lastName + ", " + person.firstName + ", " + str(person.age) + "yr" + ", " + str(person.weight) + "lb" + ", " + str(person.height) + "in" + ", " + person.eyes + "eyes")
 
-def printSortByEyes(students):
-	sortStudents = sorted(students, key=lambda student: student.eyes)
-	for student in sortStudents:
-		print (student.eyes + " eyes" + ", " + student.lastName + ", " + student.firstName + ", " + str(student.age) + "yr" + ", " + str(student.weight) + "lb" + ", " + str(student.height) + "in" + ", " + student.hair + " hair")
+def printSortByEyes(persons):
+	print ("<<<PERSONS SORTED BY EYE COLOR>>>")
+	sortPersons = sorted(persons, key=lambda student: person.eyes)
+	for student in sortPersons:
+		print (person.eyes + " eyes" + ", " + person.lastName + ", " + person.firstName + ", " + str(person.age) + "yr" + ", " + str(person.weight) + "lb" + ", " + str(person.height) + "in" + ", " + person.hair + " hair")
 
-def addStudent(students):
-	print ("<<<ADD STUDENTS>>>")
+def addPerson(persons):
+	print ("<<<ADD PERSONS>>>")
 	newStudentLName = input("ENTER LAST NAME: ")
 	newStudentFName = input("ENTER FIRST NAME: ")
 	newStudentAge = int(input("ENTER AGE: "))
@@ -110,12 +113,12 @@ def addStudent(students):
 	newStudentHeight = int(input("ENTER HEIGHT: "))
 	newStudentHair = input("ENTER HAIR COLOR: ")
 	newStudentEyes = input("ENTER EYE COLOR: ")
-	students.append(Student(newStudentLName, newStudentFName, newStudentAge, newStudentWeight, newStudentHeight, newStudentHair, newStudentEyes))
+	persons.append(Person(newStudentLName, newStudentFName, newStudentAge, newStudentWeight, newStudentHeight, newStudentHair, newStudentEyes))
 
-def removeStudent(students):
+def removePerson(persons):
 	print ("<<<REMOVE STUDENT>>>")
 	indexRemoved = int(input("ENTER INDEX OF STUDENT: "))
-	print ("REMOVED " + students[indexRemoved].lastName + " FROM LIST")
-	students.pop(indexRemoved)
+	print ("REMOVED " + persons[indexRemoved].lastName + " FROM LIST")
+	persons.pop(indexRemoved)
 
 main()
