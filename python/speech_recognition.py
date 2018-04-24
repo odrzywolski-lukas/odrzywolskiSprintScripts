@@ -1,0 +1,1 @@
+#C:\Users\Baxter\Documents\repos\models\research\syntaxnet\tensorflow\tensorflow\examples\speech_commands
